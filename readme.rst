@@ -1,6 +1,5 @@
 ###################
-Progress Selesai
+Sistem Informasi Akademik Sekolah
 ###################
-1. Crud produk
-2. Crud Kategori
-3. Login & Logout Session
+Website ini dibangun dengan bahasa pemrograman PHP dan framework Codeigniter 3
+Fitur yang terdapat pada website ini seperti input nilai siswa, absensi siswa, pelanggaran siswa, tagihan keuangan serta konsultasi dengan guru BK.
