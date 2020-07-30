@@ -1,0 +1,56 @@
+<?php
+class konsultasi extends CI_Controller
+{
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('konsultasi_model');
+        $this->load->model('siswa_model');
+        $this->load->helper('url');
+    }
+
+    public function index()
+    {
+        $data['data'] = $this->konsultasi_model->get();
+        $data['students'] = $this->siswa_model->getByRole(5);
+        $this->load->view('konsultasi/list_konsultasi', $data);
+    }
+
+    public function add()
+    {
+        $data = array(
+            'user_id_pengirim' => $this->input->post('user_id_pengirim'),
+            'nama_pengirim' => $this->input->post('nama_pengirim'),
+            'pesan' => $this->input->post('pesan'),
+            'tanggal_dikirim' => date("Y-m-d H:i:s")
+        );
+        $this->konsultasi_model->insert($data);
+        redirect('konsultasi');
+    }
+
+    public function edit($id)
+    {
+        $data['data'] = $this->konsultasi_model->getById($id);
+        $data['students'] = $this->siswa_model->getByRole(5);
+        $this->load->view('konsultasi/edit_konsultasi', $data);
+    }
+
+    public function update($id)
+    {
+        $data = array(
+            'user_id_penerima' => $this->input->post('user_id_penerima'),
+            'nama_penerima' => $this->input->post('nama_penerima'),
+            'balasan' => $this->input->post('balasan'),
+            'tanggal_dibalas' => date("Y-m-d H:i:s")
+        );
+        $this->konsultasi_model->update($id, $data);
+        redirect('konsultasi');
+    }
+
+    public function delete($id)
+    {
+        $this->konsultasi_model->delete($id);
+        redirect('konsultasi');
+    }
+}
