@@ -44,6 +44,11 @@ class user_model extends CI_Model{
         $this->db->delete($this->tabel_name);
     }
 
-
+    function cek_login($user,$pass)
+    {
+        $this->db->where('username',$user);
+        $this->db->where('password',$pass);
+        return $this->db->get($this->tabel_name)->row();
+    }
 }
 ?>

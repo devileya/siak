@@ -41,7 +41,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">List </strong>Nilai
-                        <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Nilai</i></button>
+                        <?php if ($this->session->userdata('role_id') == 3) { ?>
+                            <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Nilai</i></button>
+                        <?php } ?>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -54,7 +56,10 @@
                                     <th>UH</th>
                                     <th>UTS</th>
                                     <th>UAS</th>
-                                    <th>Aksi</th>
+
+                                    <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                        <th>Aksi</th>
+                                    <?php } ?>
 
                                 </tr>
                             </thead>
@@ -69,12 +74,13 @@
                                         <td><?= $item->uts ?></td>
                                         <td><?= $item->uas ?></td>
 
-                                        <td>
+                                        <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                            <td>
+                                                <?= anchor(site_url('nilai/edit/' . $item->id), '<i class="fa fa-pencil" ></i>', 'class="btn btn-warning"'); ?>
+                                                <?= anchor(site_url('nilai/delete/' . $item->id), '<i class="fa fa-trash" ></i>', 'class="btn btn-danger"'); ?>
+                                            </td>
+                                        <?php } ?>
 
-                                            <?= anchor(site_url('nilai/edit/' . $item->id), '<i class="fa fa-pencil" ></i>', 'class="btn btn-warning"'); ?>
-                                            <?= anchor(site_url('nilai/delete/' . $item->id), '<i class="fa fa-trash" ></i>', 'class="btn btn-danger"'); ?>
-
-                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

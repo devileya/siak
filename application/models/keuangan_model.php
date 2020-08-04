@@ -38,5 +38,19 @@ class keuangan_model extends CI_Model{
         $this->db->where('id', $id);
         $this->db->delete($this->tabel_name);
     }
+
+    function getByTeacherId($user_id){
+        $query = $this->db->query("SELECT k.*,s.nis,s.nama nama_siswa
+        FROM keuangan k, siswa s, kelas k
+        WHERE k.siswa_id = s.id and s.kelas_id = k.id and k.guru_id = $user_id");
+        return $query->result();
+    }
+
+    function getByParentId($user_id){
+        $query = $this->db->query("SELECT k.*,s.nis,s.nama nama_siswa
+        FROM keuangan k, siswa s
+        WHERE k.siswa_id = s.id and s.orangtua_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

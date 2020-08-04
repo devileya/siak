@@ -34,4 +34,10 @@ class kelas_model extends CI_Model{
         $this->db->where('id', $id);
         $this->db->delete($this->tabel_name);
     }
+
+    function getByTeacherId($user_id)
+    {
+        $query = $this->db->query("SELECT k.* FROM kelas k WHERE k.guru_id = $user_id");
+        return $query->result();
+    }
 }

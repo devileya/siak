@@ -14,10 +14,24 @@ class nilai extends CI_Controller
 
     public function index()
     {
-        $data['data'] = $this->nilai_model->get();
-        $data['students'] = $this->siswa_model->getByRole(5);
-        $data['subjects'] = $this->pelajaran_model->get();
-        $data['classes'] = $this->kelas_model->get();
+        $user_id = $this->session->userdata('user_id');
+        $role_id = $this->session->userdata('role_id');
+
+        switch ($role_id) {
+            case 1:
+                $data['data'] = $this->nilai_model->get();
+                $data['students'] = $this->siswa_model->getByRole(5);
+                break;
+            case 2:
+                $data['data'] = $this->nilai_model->getByParentId($user_id);
+                break;
+            case 3:
+                $data['data'] = $this->nilai_model->getByTeacherId($user_id);
+                $data['students'] = $this->siswa_model->getByTeacherId($user_id);
+                $data['subjects'] = $this->pelajaran_model->get();
+                $data['classes'] = $this->kelas_model->getByTeacherId($user_id);
+                break;
+        }
         $this->load->view('nilai/list_nilai', $data);
     }
 
@@ -38,9 +52,15 @@ class nilai extends CI_Controller
     public function edit($id)
     {
         $data['data'] = $this->nilai_model->getById($id);
-        $data['students'] = $this->siswa_model->getByRole(5);
+        $user_id = $this->session->userdata('user_id');
+        if ($this->session->userdata('role_id') == 1) {
+            $data['students'] = $this->siswa_model->getByRole(5);
+            $data['classes'] = $this->kelas_model->get();
+        } else {
+            $data['students'] = $this->siswa_model->getByTeacherId($user_id);
+            $data['classes'] = $this->kelas_model->getByTeacherId($user_id);
+        }
         $data['subjects'] = $this->pelajaran_model->get();
-        $data['classes'] = $this->kelas_model->get();
         $this->load->view('nilai/edit_nilai', $data);
     }
 

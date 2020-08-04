@@ -23,6 +23,7 @@ class orangtua extends CI_Controller{
         $user_id = $this->user_model->insert($data_user);
 
         $data = array(
+            'id'  => $user_id,
             'nama'  => $this->input->post('nama'),
             'user_id' => $user_id
         );

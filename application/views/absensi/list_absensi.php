@@ -41,40 +41,45 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">List </strong>Absensi
-                        <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Absensi</i></button>
+                        <?php if ($this->session->userdata('role_id') == 3) { ?>
+                            <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Absensi</i></button>
+                        <?php } ?>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
-                            <tr>
-                                <th>Tanggal</th>
-                                <th>NIS</th>
-                                <th>Nama Siswa</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>NIS</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>Status</th>
+                                    <th>Keterangan</th>
+                                    <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                        <th>Aksi</th>
+                                    <?php } ?>
 
-                            </tr>
+                                </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($data as $key => $item) { ?>
-                                <tr>
-                                    <td><?= $item->tanggal ?></td>
-                                    <td><?= $item->nis ?></td>
-                                    <td><?= $item->nama_siswa ?></td>
-                                    <td><?= $item->nama_pelajaran ?></td>
-                                    <td><?= $item->status ?></td>
-                                    <td><?= $item->keterangan ?></td>
+                                <?php foreach ($data as $key => $item) { ?>
+                                    <tr>
+                                        <td><?= $item->tanggal ?></td>
+                                        <td><?= $item->nis ?></td>
+                                        <td><?= $item->nama_siswa ?></td>
+                                        <td><?= $item->nama_pelajaran ?></td>
+                                        <td><?= $item->status ?></td>
+                                        <td><?= $item->keterangan ?></td>
 
-                                    <td>
+                                        <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                            <td>
+                                                <?= anchor(site_url('absensi/edit/' . $item->id), '<i class="fa fa-pencil" ></i>', 'class="btn btn-warning"'); ?>
+                                                <?= anchor(site_url('absensi/delete/' . $item->id), '<i class="fa fa-trash" ></i>', 'class="btn btn-danger"'); ?>
+                                            </td>
+                                        <?php } ?>
 
-                                        <?= anchor(site_url('absensi/edit/'.$item->id),'<i class="fa fa-pencil" ></i>','class="btn btn-warning"');?>
-                                        <?= anchor(site_url('absensi/delete/'.$item->id),'<i class="fa fa-trash" ></i>','class="btn btn-danger"');?>
-
-                                    </td>
-                                </tr>
-                            <?php } ?>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -97,36 +102,36 @@
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Siswa</label></div>
                                 <div class="col-12 col-md-9">
-                                        <select name="siswa_id" class="form-control" required>
-                                            <option>--Pilih Siswa--</option>
-                                            <?php foreach ($students as $student) {
-                                                echo "<option value='$student->id'>$student->nama</option>";
-                                            } ?>
-                                        </select>
+                                    <select name="siswa_id" class="form-control" required>
+                                        <option>--Pilih Siswa--</option>
+                                        <?php foreach ($students as $student) {
+                                            echo "<option value='$student->id'>$student->nama</option>";
+                                        } ?>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Pelajaran</label></div>
                                 <div class="col-12 col-md-9">
-                                        <select name="pelajaran_id" class="form-control" required>
-                                            <option>--Pilih Pelajaran--</option>
-                                            <?php foreach ($subjects as $subject) {
-                                                echo "<option value='$subject->id'>$subject->nama</option>";
-                                            } ?>
-                                        </select>
+                                    <select name="pelajaran_id" class="form-control" required>
+                                        <option>--Pilih Pelajaran--</option>
+                                        <?php foreach ($subjects as $subject) {
+                                            echo "<option value='$subject->id'>$subject->nama</option>";
+                                        } ?>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Kehadiran</label></div>
                                 <div class="col-12 col-md-9">
-                                        <select name="status" class="form-control" required>
-                                            <option value="HADIR">HADIR</option>
-                                            <option value="SAKIT">SAKIT</option>
-                                            <option value="IZIN">IZIN</option>
-                                            <option value="ALPHA">ALPHA</option>
-                                        </select>
+                                    <select name="status" class="form-control" required>
+                                        <option value="HADIR">HADIR</option>
+                                        <option value="SAKIT">SAKIT</option>
+                                        <option value="IZIN">IZIN</option>
+                                        <option value="ALPHA">ALPHA</option>
+                                    </select>
                                 </div>
                             </div>
 

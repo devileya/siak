@@ -41,7 +41,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">List </strong>Pelanggaran
-                        <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Pelanggaran</i></button>
+                        <?php if ($this->session->userdata('role_id') == 3) { ?>
+                            <button style="float: right" class="btn btn-warning" onclick="showAdd()"><i class="fa fa-plus-circle"> Tambah Pelanggaran</i></button>
+                        <?php } ?>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -50,7 +52,9 @@
                                     <th>Tanggal</th>
                                     <th>Nama Siswa</th>
                                     <th>Pelanggaran</th>
-                                    <th>Aksi</th>
+                                    <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                        <th>Aksi</th>
+                                    <?php } ?>
 
                                 </tr>
                             </thead>
@@ -61,12 +65,13 @@
                                         <td><?= $item->nama_siswa ?></td>
                                         <td><?= $item->keterangan ?></td>
 
-                                        <td>
+                                        <?php if ($this->session->userdata('role_id') == 3 || $this->session->userdata('role_id') == 1) { ?>
+                                            <td>
+                                                <?= anchor(site_url('pelanggaran/edit/' . $item->id), '<i class="fa fa-pencil" ></i>', 'class="btn btn-warning"'); ?>
+                                                <?= anchor(site_url('pelanggaran/delete/' . $item->id), '<i class="fa fa-trash" ></i>', 'class="btn btn-danger"'); ?>
+                                            </td>
+                                        <?php } ?>
 
-                                            <?= anchor(site_url('pelanggaran/edit/' . $item->id), '<i class="fa fa-pencil" ></i>', 'class="btn btn-warning"'); ?>
-                                            <?= anchor(site_url('pelanggaran/delete/' . $item->id), '<i class="fa fa-trash" ></i>', 'class="btn btn-danger"'); ?>
-
-                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

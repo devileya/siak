@@ -64,7 +64,7 @@
                                         <td><?= $item->nama_pengirim ?></td>
                                         <td><?= $item->nama_penerima ?></td>
                                         <td><?= $item->pesan ?></td>
-                                        <?php if ($item->balasan == null && $item->user_id_pengirim != 13) { ?>
+                                        <?php if ($item->balasan == null && $item->user_id_pengirim != $this->session->userdata('user_id')) { ?>
                                             <td>
                                                 <?= anchor(site_url('konsultasi/edit/' . $item->id), 'BALAS', 'class="btn btn-warning"'); ?>
                                             </td>
@@ -85,21 +85,23 @@
                         </div>
                         <div class="card-body card-block">
 
-                            <div class="row form-group">
-                                <div class="col col-md-12"><label class=" form-control-label">Siswa</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="user_id_penerima" class="form-control" required>
-                                        <option>--Pilih Siswa--</option>
-                                        <?php foreach ($students as $student) {
-                                            echo "<option value='$student->user_id'>$student->nama</option>";
-                                        } ?>
-                                    </select>
+                            <?php if ($this->session->userdata('role_id') == 4) { ?>
+                                <div class="row form-group">
+                                    <div class="col col-md-12"><label class=" form-control-label">Siswa</label></div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="user_id_penerima" class="form-control" required>
+                                            <option>--Pilih Siswa--</option>
+                                            <?php foreach ($students as $student) {
+                                                echo "<option value='$student->user_id'>$student->nama</option>";
+                                            } ?>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
 
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Nama Pengirim</label></div>
-                                <div class="col-12 col-md-9"><input type="text" name="nama_pengirim" class="form-control" value="Aulia" readonly><small class="form-text text-muted">Nama Pengirim</small></div>
+                                <div class="col-12 col-md-9"><input type="text" name="nama_pengirim" class="form-control" value="<?= $pengirim->nama ?>" readonly><small class="form-text text-muted">Nama Pengirim</small></div>
                             </div>
 
                             <div class="row form-group">
@@ -107,7 +109,7 @@
                                 <div class="col-12 col-md-9"><textarea class="form-control" name="pesan" rows="3" required></textarea><small class="form-text text-muted">Masukan Pesan Konsultasi</small></div>
                             </div>
 
-                            <input type="hidden" name="user_id_pengirim" value="13" />
+                            <input type="hidden" name="user_id_pengirim" value="<?= $penerima->id ?>" />
 
                         </div>
                         <div class="card-footer">

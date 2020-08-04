@@ -38,5 +38,19 @@ class nilai_model extends CI_Model{
         $this->db->where('id', $id);
         $this->db->delete($this->tabel_name);
     }
+
+    function getByTeacherId($user_id){
+        $query = $this->db->query("SELECT n.*,s.nis,s.nama nama_siswa, p.nama nama_pelajaran, k.nama nama_kelas 
+        FROM nilai n, siswa s, pelajaran p, kelas k
+        WHERE n.siswa_id = s.id and n.pelajaran_id = p.id and n.kelas_id = k.id and k.guru_id = $user_id");
+        return $query->result();
+    }
+    
+    function getByParentId($user_id){
+        $query = $this->db->query("SELECT n.*,s.nis,s.nama nama_siswa, p.nama nama_pelajaran, k.nama nama_kelas 
+        FROM nilai n, siswa s, pelajaran p, kelas k
+        WHERE n.siswa_id = s.id and n.pelajaran_id = p.id and n.kelas_id = k.id and s.orangtua_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

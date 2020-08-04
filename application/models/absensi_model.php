@@ -36,5 +36,17 @@ class absensi_model extends CI_Model{
         $this->db->where('id', $id);
         $this->db->delete($this->tabel_name);
     }
+
+    function getByTeacherId($user_id){
+        $query = $this->db->query("SELECT a.*,s.nis,s.nama nama_siswa, p.nama nama_pelajaran FROM absensi a, siswa s, pelajaran p, kelas k  
+        WHERE a.siswa_id = s.id and a.pelajaran_id = p.id and s.kelas_id = k.id and k.guru_id = $user_id");
+        return $query->result();
+    }
+
+    function getByParentId($user_id){
+        $query = $this->db->query("SELECT a.*,s.nis,s.nama nama_siswa, p.nama nama_pelajaran FROM absensi a, siswa s, pelajaran p 
+        WHERE a.siswa_id = s.id and a.pelajaran_id = p.id and s.orangtua_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

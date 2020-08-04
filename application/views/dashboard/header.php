@@ -111,7 +111,7 @@
                     </a>
 
                     <div class="user-menu dropdown-menu">
-
+                        <a class="nav-link" href="<?= site_url('login/editPassword') ?>"><i class="fa fa-power -off"></i>Ubah Password</a>
                         <a class="nav-link" href="<?= site_url('login/logout') ?>"><i class="fa fa-power -off"></i>Logout</a>
                     </div>
                 </div>

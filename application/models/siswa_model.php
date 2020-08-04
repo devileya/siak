@@ -43,5 +43,11 @@ class siswa_model extends CI_Model{
         $query = $this->db->query("SELECT s.* FROM siswa s, user u WHERE s.user_id = u.id and u.role_id = $role_id");
         return $query->result();
     }
+
+    function getByTeacherId($user_id)
+    {
+        $query = $this->db->query("SELECT s.* FROM siswa s, kelas k, guru g WHERE s.kelas_id = k.id AND k.guru_id = g.id AND g.user_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

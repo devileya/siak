@@ -59,7 +59,7 @@
 
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Nama Penerima</label></div>
-                                <div class="col-12 col-md-9"><input type="text" name="nama_penerima" class="form-control" value="Aulia" readonly><small class="form-text text-muted">Nama Penerima</small></div>
+                                <div class="col-12 col-md-9"><input type="text" name="nama_penerima" class="form-control" value="<?= $penerima->nama ?>" readonly><small class="form-text text-muted">Nama Penerima</small></div>
                             </div>
 
                             <div class="row form-group">
@@ -67,7 +67,7 @@
                                 <div class="col-12 col-md-9"><textarea class="form-control" name="balasan" rows="3" required></textarea><small class="form-text text-muted">Masukan Pesan Konsultasi</small></div>
                             </div>
 
-                            <input type="hidden" name="user_id_penerima" value="13"/>
+                            <input type="hidden" name="user_id_penerima" value="<?= $penerima->id ?>"/>
 
                         </div>
                         <div class="card-footer">

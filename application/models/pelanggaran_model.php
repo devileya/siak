@@ -35,5 +35,15 @@ class pelanggaran_model extends CI_Model{
         $this->db->delete($this->tabel_name);
     }
 
+    function getByTeacherId($user_id){
+        $query = $this->db->query("SELECT p.*,s.nama as nama_siswa FROM pelanggaran p, siswa s, kelas k 
+        where p.siswa_id = s.id and s.kelas_id = k.id and k.guru_id = $user_id");
+        return $query->result();
+    }
 
+    function getByParentId($user_id){
+        $query = $this->db->query("SELECT p.*,s.nama as nama_siswa FROM pelanggaran p, siswa s 
+        where p.siswa_id = s.id and s.orangtua_id = $user_id");
+        return $query->result();
+    }
 }

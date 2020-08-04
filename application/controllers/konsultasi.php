@@ -7,6 +7,8 @@ class konsultasi extends CI_Controller
         parent::__construct();
         $this->load->model('konsultasi_model');
         $this->load->model('siswa_model');
+        $this->load->model('guru_model');
+        $this->load->model('orangtua_model');
         $this->load->helper('url');
     }
 
@@ -14,6 +16,12 @@ class konsultasi extends CI_Controller
     {
         $data['data'] = $this->konsultasi_model->get();
         $data['students'] = $this->siswa_model->getByRole(5);
+        $user_id = $this->session->userdata('user_id');
+        if ($this->session->userdata('role_id') == 4) {
+            $data['pengirim'] = $this->guru_model->getById($user_id);
+        } else {
+            $data['pengirim'] = $this->orangtua_model->getById($user_id);
+        }
         $this->load->view('konsultasi/list_konsultasi', $data);
     }
 
@@ -31,6 +39,12 @@ class konsultasi extends CI_Controller
 
     public function edit($id)
     {
+        $user_id = $this->session->userdata('user_id');
+        if ($this->session->userdata('role_id') == 4) {
+            $data['penerima'] = $this->guru_model->getById($user_id);
+        } else {
+            $data['penerima'] = $this->orangtua_model->getById($user_id);
+        }
         $data['data'] = $this->konsultasi_model->getById($id);
         $data['students'] = $this->siswa_model->getByRole(5);
         $this->load->view('konsultasi/edit_konsultasi', $data);

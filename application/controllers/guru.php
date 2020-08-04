@@ -23,6 +23,7 @@ class guru extends CI_Controller{
         $user_id = $this->user_model->insert($data_user);
 
         $data = array(
+            'id'  =>$user_id,
             'nip'  => $this->input->post('nip'),
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),

@@ -28,6 +28,7 @@ class siswa extends CI_Controller{
         $user_id = $this->user_model->insert($data_user);
 
         $data = array(
+            'id'  => $user_id,
             'nis'  => $this->input->post('nis'),
             'nama' => $this->input->post('nama'),
             'jk' => $this->input->post('jk'),

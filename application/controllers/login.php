@@ -9,10 +9,7 @@ class login extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('login_model');
-        $this->load->model('orangtua_model');
-        $this->load->model('guru_model');
-        $this->load->model('siswa_model');
+        $this->load->model('user_model');
     }
 
     public function index()
@@ -28,7 +25,7 @@ class login extends CI_Controller
         }
         else
         {
-            $data = $this->login_model->cek_login(
+            $data = $this->user_model->cek_login(
                 $this->input->post('username'),
                 $this->input->post('password')
             );
@@ -37,7 +34,7 @@ class login extends CI_Controller
                 $this->session->set_userdata('logined', true);
                 $this->session->set_userdata('username', $data->username);
                 $this->session->set_userdata('role_id', $data->role_id);
-                $this->session->set_userdata('user_id', $data->user_id);
+                $this->session->set_userdata('user_id', $data->id);
                 redirect("dashboard");
             }
             else
@@ -54,6 +51,22 @@ class login extends CI_Controller
         $this->session->unset_userdata('logined');
         redirect("login");
     }
+
+    public function editPassword()
+    {
+        $data['user'] = $this->user_model->getById($this->session->userdata('user_id'));
+        $this->load->view('login/edit_password', $data);
+    }
+
+    public function updatePassword($id)
+    {
+        $data = array(
+            'password' => $this->input->post('password')
+        );
+        $this->user_model->update($id, $data);
+        redirect('dashboard');
+    }
+
 }
 
 /* End of file Workflows.php */
