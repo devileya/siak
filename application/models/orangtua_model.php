@@ -2,7 +2,7 @@
 /**
  * @author    Arif Fadly Siregar <fadlyarif77@gmail.com>
  */
-class orangtua_model extends CI_Model{
+class Orangtua_model extends CI_Model{
 
     public $tabel_name = 'orangtua';
 

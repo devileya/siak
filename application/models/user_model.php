@@ -1,9 +1,6 @@
 <?php
 
-/**
- * @author    Arif Fadly Siregar <fadlyarif77@gmail.com>
- */
-class user_model extends CI_Model{
+class User_model extends CI_Model{
 
     public $tabel_name = 'user';
 

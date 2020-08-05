@@ -1,5 +1,5 @@
 <?php
-class pelanggaran_model extends CI_Model{
+class Pelanggaran_model extends CI_Model{
 
     public $tabel_name = 'pelanggaran';
 
