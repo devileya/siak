@@ -53,8 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	define('ENVIRONMENT', 'development');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
@@ -64,22 +63,30 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-if (defined('ENVIRONMENT'))
+switch (ENVIRONMENT)
 {
-	switch (ENVIRONMENT)
-	{
-		case 'development':
-			error_reporting(E_ALL);
-		break;
-	
-		case 'testing':
-		case 'production':
-			error_reporting(0);
-		break;
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
 
-		default:
-			exit('The application environment is not set correctly.');
-	}
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
+
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
 }
 
 /*
@@ -184,51 +191,31 @@ if (defined('ENVIRONMENT'))
  */
 
 	// Set the current directory correctly for CLI requests
-	// if (defined('STDIN'))
-	// {
-	// 	chdir(dirname(__FILE__));
-	// }
-
-	// if (($_temp = realpath($system_path)) !== FALSE)
-	// {
-	// 	$system_path = $_temp.DIRECTORY_SEPARATOR;
-	// }
-	// else
-	// {
-	// 	// Ensure there's a trailing slash
-	// 	$system_path = strtr(
-	// 		rtrim($system_path, '/\\'),
-	// 		'/\\',
-	// 		DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-	// 	).DIRECTORY_SEPARATOR;
-	// }
-
-	// // Is the system path correct?
-	// if ( ! is_dir($system_path))
-	// {
-	// 	header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-	// 	echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
-	// 	exit(3); // EXIT_CONFIG
-	// }
-
-
 	if (defined('STDIN'))
 	{
 		chdir(dirname(__FILE__));
 	}
 
-	if (realpath($system_path) !== FALSE)
+	if (($_temp = realpath($system_path)) !== FALSE)
 	{
-		$system_path = realpath($system_path).'/';
+		$system_path = $_temp.DIRECTORY_SEPARATOR;
 	}
-
-	// ensure there's a trailing slash
-	$system_path = rtrim($system_path, '/').'/';
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = strtr(
+			rtrim($system_path, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		).DIRECTORY_SEPARATOR;
+	}
 
 	// Is the system path correct?
 	if ( ! is_dir($system_path))
 	{
-		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
 	}
 
 /*
