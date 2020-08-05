@@ -1,5 +1,5 @@
 <?php
-class pelajaran extends CI_Controller
+class Pelajaran extends CI_Controller
 {
 
     function __construct()

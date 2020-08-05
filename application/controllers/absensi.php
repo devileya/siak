@@ -1,5 +1,5 @@
 <?php
-class absensi extends CI_Controller
+class Absensi extends CI_Controller
 {
 
     function __construct()

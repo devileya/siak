@@ -1,5 +1,5 @@
 <?php
-class konsultasi extends CI_Controller
+class Konsultasi extends CI_Controller
 {
 
     function __construct()

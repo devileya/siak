@@ -1,5 +1,5 @@
 <?php
-class siswa extends CI_Controller{
+class Siswa extends CI_Controller{
 
     function __construct()
     {

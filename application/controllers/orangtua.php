@@ -1,5 +1,5 @@
 <?php
-class orangtua extends CI_Controller{
+class Orangtua extends CI_Controller{
 
     function __construct()
     {

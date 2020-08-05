@@ -1,5 +1,5 @@
 <?php
-class kelas extends CI_Controller
+class Kelas extends CI_Controller
 {
 
     function __construct()
