@@ -109,7 +109,7 @@
                                 <div class="col-12 col-md-9"><textarea class="form-control" name="pesan" rows="3" required></textarea><small class="form-text text-muted">Masukan Pesan Konsultasi</small></div>
                             </div>
 
-                            <input type="hidden" name="user_id_pengirim" value="<?= $penerima->id ?>" />
+                            <input type="hidden" name="user_id_pengirim" value="<?= $pengirim->id ?>" />
 
                         </div>
                         <div class="card-footer">
