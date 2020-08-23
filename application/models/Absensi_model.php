@@ -48,5 +48,11 @@ class Absensi_model extends CI_Model{
         WHERE a.siswa_id = s.id and a.pelajaran_id = p.id and s.orangtua_id = $user_id");
         return $query->result();
     }
+
+    function getByStudentId($user_id){
+        $query = $this->db->query("SELECT a.*,s.nis,s.nama nama_siswa, p.nama nama_pelajaran FROM absensi a, siswa s, pelajaran p, kelas k  
+        WHERE a.siswa_id = s.id and a.pelajaran_id = p.id and s.kelas_id = k.id and a.siswa_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

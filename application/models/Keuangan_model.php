@@ -52,5 +52,12 @@ class Keuangan_model extends CI_Model{
         WHERE k.siswa_id = s.id and s.orangtua_id = $user_id");
         return $query->result();
     }
+
+    function getByStudentId($user_id){
+        $query = $this->db->query("SELECT u.*,s.nis,s.nama nama_siswa
+        FROM keuangan u, siswa s, kelas k
+        WHERE u.siswa_id = s.id and s.kelas_id = k.id and u.siswa_id = $user_id");
+        return $query->result();
+    }
 }
 ?>

@@ -35,5 +35,10 @@ class Konsultasi_model extends CI_Model{
         $this->db->where('id', $id);
         $this->db->delete($this->tabel_name);
     }
+
+    function getByStudentId($user_id) {
+        $query = $this->db->query("SELECT * FROM konsultasi WHERE user_id_pengirim = $user_id or user_id_penerima = $user_id");
+        return $query->result();
+    }
 }
 ?>
