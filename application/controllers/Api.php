@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require ('/libraries/RESTController.php');
-require ('/libraries/Format.php');
+require ('application/libraries/RESTController.php');
+require ('application/libraries/Format.php');
 use chriskacerguis\RestServer\RestController;
 
 class Api extends RestController {
