@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require ('application/libraries/RESTController.php');
+require ('application/libraries/RestController.php');
 require ('application/libraries/Format.php');
 use chriskacerguis\RestServer\RestController;
 
