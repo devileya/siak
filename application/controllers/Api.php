@@ -94,7 +94,7 @@ class Api extends RestController {
 
     public function pelanggaran_get($user_id)
     {
-        $data = $this->absensi_model->getByStudentId($user_id);
+        $data = $this->pelanggaran_model->getByStudentId($user_id);
         $this->response( [
             'status' => true,
             'message' => 'Success Get Data',
