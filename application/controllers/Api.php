@@ -53,8 +53,8 @@ class Api extends RestController {
         ], 200);
     }
 
-    public function siswa_get() {
-        $data = $this->siswa_model->get();
+    public function siswa_get($user_id) {
+        $data = $this->siswa_model->getById($user_id);
         $this->response( [
             'status' => true,
             'message' => 'Success Get Data',
