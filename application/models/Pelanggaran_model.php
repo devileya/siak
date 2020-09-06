@@ -49,7 +49,7 @@ class Pelanggaran_model extends CI_Model{
 
     function getByStudentId($user_id){
         $query = $this->db->query("SELECT p.*,s.nama as nama_siswa,s.nis FROM pelanggaran p, siswa s, kelas k 
-        where p.siswa_id = s.id and s.kelas_id = k.id and p.siswa_id = $user_id");
+        where p.siswa_id = s.id and s.kelas_id = k.id and p.siswa_id = $user_id order by id desc");
         return $query->result();
     }
 }

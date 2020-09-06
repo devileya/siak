@@ -47,5 +47,12 @@ class User_model extends CI_Model{
         $this->db->where('password',$pass);
         return $this->db->get($this->tabel_name)->row();
     }
+
+    function cek_password($userId, $pass)
+    {
+        $this->db->where('id',$userId);
+        $this->db->where('password',$pass);
+        return $this->db->get($this->tabel_name)->row();
+    }
 }
 ?>

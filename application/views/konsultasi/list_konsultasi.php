@@ -89,10 +89,10 @@
                                 <div class="row form-group">
                                     <div class="col col-md-12"><label class=" form-control-label">Siswa</label></div>
                                     <div class="col-12 col-md-9">
-                                        <select name="user_id_penerima" class="form-control" required>
+                                        <select name="user" class="form-control" required>
                                             <option>--Pilih Siswa--</option>
                                             <?php foreach ($students as $student) {
-                                                echo "<option value='$student->user_id'>$student->nama</option>";
+                                                echo "<option value='$student->user_id,$student->nama'>$student->nama</option>";
                                             } ?>
                                         </select>
                                     </div>

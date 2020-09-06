@@ -27,10 +27,13 @@ class Konsultasi extends CI_Controller
 
     public function add()
     {
+        $data_user = explode(",",$this->input->post('user'));
         $data = array(
             'user_id_pengirim' => $this->input->post('user_id_pengirim'),
             'nama_pengirim' => $this->input->post('nama_pengirim'),
             'pesan' => $this->input->post('pesan'),
+            'user_id_penerima' => $data_user[0],
+            'nama_penerima' => $data_user[1],
             'tanggal_dikirim' => date("Y-m-d H:i:s")
         );
         $this->konsultasi_model->insert($data);

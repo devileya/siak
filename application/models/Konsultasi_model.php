@@ -37,7 +37,7 @@ class Konsultasi_model extends CI_Model{
     }
 
     function getByStudentId($user_id) {
-        $query = $this->db->query("SELECT * FROM konsultasi WHERE user_id_pengirim = $user_id or user_id_penerima = $user_id");
+        $query = $this->db->query("SELECT * FROM konsultasi WHERE user_id_pengirim = $user_id or user_id_penerima = $user_id order by id desc");
         return $query->result();
     }
 }

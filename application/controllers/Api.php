@@ -121,26 +121,47 @@ class Api extends RestController {
             'tanggal_dikirim' => date("Y-m-d H:i:s")
         );
         $this->konsultasi_model->insert($data);
+        $dataResponse = $this->konsultasi_model->getByStudentId($this->post('user_id_pengirim'));
         $this->response( [
             'status' => true,
             'message' => 'Success Add Data',
-            'data' => $data
+            'data' => $dataResponse
         ], 200);
     }
 
     public function konsultasi_put($konsultasi_id)
     {
         $data = array(
-            'user_id_penerima' => $this->post('user_id_penerima'),
-            'nama_penerima' => $this->post('nama_penerima'),
-            'balasan' => $this->post('balasan'),
+            'user_id_penerima' => $this->put('user_id_penerima'),
+            'nama_penerima' => $this->put('nama_penerima'),
+            'balasan' => $this->put('balasan'),
             'tanggal_dibalas' => date("Y-m-d H:i:s")
         );
         $this->konsultasi_model->update($konsultasi_id, $data);
+        $dataResponse = $this->konsultasi_model->getByStudentId($this->put('user_id_penerima'));
         $this->response( [
             'status' => true,
             'message' => 'Success Change Data',
-            'data' => $data
+            'data' => $dataResponse
         ], 200);
+    }
+
+    public function changepassword_put($user_id) {
+        $data = $this->user_model->cek_password($user_id, $this->put('old_password'));
+        if(!empty($data) && $data->role_id == 5) {
+            $newData["password"] = $this->put('new_password');
+            $this->user_model->update($user_id, $newData);
+            $this->response( [
+                'status' => true,
+                'message' => 'Password Berhasil Diubah.'
+            ], 200);
+        }
+        else {
+            $this->response( [
+                'status' => false,
+                'message' => 'Password Lama Salah.',
+                'data' => $this->put('old_password')
+            ], 200);
+        }
     }
 }
