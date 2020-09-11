@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/css/themify-icons.css') ?>">
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/css/flag-icon.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/css/cs-skin-elastic.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/scss/style2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/scss/style2.css?v=2') ?>">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>

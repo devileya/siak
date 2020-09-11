@@ -987,8 +987,7 @@ aside.left-panel {
 
 .navbar .navbar-nav > .active > a,
 .navbar .navbar-nav > .active > a:focus
- {
-  color: #d7d9e !important; }
+ {color: #d7d9ee !important; }
 
 .navbar-nav li span.count {
   background: #a9d86e;

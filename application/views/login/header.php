@@ -24,6 +24,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('asset_login/vendor/daterangepicker/daterangepicker.css') ?>">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('asset_login/css/util.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('asset_login/css/main.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('asset_login/css/main.css?v=2') ?>">
     <!--===============================================================================================-->
 </head>
