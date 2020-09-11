@@ -22,7 +22,7 @@
   --secondary: #868e96;
   --success: #28a745;
   --info: #17a2b8;
-  --warning: #fdd100;
+  --warning: #d3d3d3;
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
@@ -2584,8 +2584,8 @@ fieldset[disabled] a.btn {
 
 .btn-warning {
   color: #212529;
-  background-color: #fdd100;
-  border-color: #fdd100;
+  background-color: #d3d3d3;
+  border-color: #d3d3d3;
 }
 
 .btn-warning:hover {
@@ -4769,7 +4769,7 @@ tbody.collapse.show {
 
 .badge-warning {
   color: #212529;
-  background-color: #fdd100;
+  background-color: #d3d3d3;
 }
 
 .badge-warning[href]:focus, .badge-warning[href]:hover {
@@ -6061,7 +6061,7 @@ button.bg-info:hover {
 }
 
 .bg-warning {
-  background-color: #fdd100 !important;
+  background-color: #d3d3d3 !important;
 }
 
 a.bg-warning:focus, a.bg-warning:hover,
@@ -6149,7 +6149,7 @@ button.bg-dark:hover {
 }
 
 .border-warning {
-  border-color: #fdd100 !important;
+  border-color: #d3d3d3 !important;
 }
 
 .border-danger {

@@ -472,27 +472,27 @@
   border-color: #17a2b8; }
 
 .switch-warning > .switch-input:checked ~ .switch-label {
-  background: #fdd100 !important;
+  background: #d3d3d3 !important;
   border-color: #d39e00; }
 .switch-warning > .switch-input:checked ~ .switch-handle {
   border-color: #d39e00; }
 
 .switch-warning-outline > .switch-input:checked ~ .switch-label {
   background: #fff !important;
-  border-color: #fdd100; }
+  border-color: #d3d3d3; }
   .switch-warning-outline > .switch-input:checked ~ .switch-label::after {
-    color: #fdd100; }
+    color: #d3d3d3; }
 .switch-warning-outline > .switch-input:checked ~ .switch-handle {
-  border-color: #fdd100; }
+  border-color: #d3d3d3; }
 
 .switch-warning-outline-alt > .switch-input:checked ~ .switch-label {
   background: #fff !important;
-  border-color: #fdd100; }
+  border-color: #d3d3d3; }
   .switch-warning-outline-alt > .switch-input:checked ~ .switch-label::after {
-    color: #fdd100; }
+    color: #d3d3d3; }
 .switch-warning-outline-alt > .switch-input:checked ~ .switch-handle {
-  background: #fdd100 !important;
-  border-color: #fdd100; }
+  background: #d3d3d3 !important;
+  border-color: #d3d3d3; }
 
 .switch-danger > .switch-input:checked ~ .switch-label {
   background: #dc3545 !important;
@@ -735,7 +735,7 @@
   background: #63c2de; }
 
 .bg-flat-color-3 {
-  background: #fdd100; }
+  background: #d3d3d3; }
 
 .bg-flat-color-4 {
   background: #f86c6b; }
@@ -826,7 +826,7 @@ textarea {
 
 aside.left-panel {
   /*background: #201F1D;*/
-  background: #fdd100;
+  background: #d3d3d3;
   display: table-cell;
   height: 100vh;
   min-height: 100%;
@@ -837,7 +837,7 @@ aside.left-panel {
 
 .navbar {
   /*background: #201F1D;*/
-  background: #fdd100;
+  background: #d3d3d3;
   border-radius: 0;
   border: none;
   display: block;
@@ -909,7 +909,7 @@ aside.left-panel {
         position: relative;
         width: 100%; }
         .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
-          /*color: #fdd100 !important;*/
+          /*color: #d3d3d3 !important;*/
           color: #ffffff !important;
         }
 
@@ -953,7 +953,7 @@ aside.left-panel {
             color: #fff; }
         .navbar .navbar-nav li.menu-item-has-children .sub-menu {
           /*background: #201F1D;*/
-          background: #fdd100;
+          background: #d3d3d3;
           border: none;
           box-shadow: none;
           overflow-y: hidden;
@@ -1093,7 +1093,7 @@ body.open .navbar .navbar-brand.hidden {
   -ms-transition: all .35s ease;
   -o-transition: all .35s ease;
   transition: all .35s ease;
-  /*background-color: #fdd100;*/
+  /*background-color: #d3d3d3;*/
   background-color: #ffffff;
 }
   .right-panel .breadcrumbs {
@@ -1125,7 +1125,7 @@ body.open .navbar .navbar-brand.hidden {
 
 .right-panel header.header {
   /*background: #201F1D;*/
-  background: #fdd100;
+  background: #d3d3d3;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
   clear: both;
   display: inline-block;
@@ -1163,7 +1163,7 @@ header.fixed-top {
   background: transparent;
   border: none;
   /*color: #201F1D;*/
-  color: #fdd100;
+  color: #d3d3d3;
   cursor: pointer;
   font-size: 16px;
   height: 41px;
@@ -1229,7 +1229,7 @@ header .form-inline {
     background: transparent;
     border: none;
     /*color: #201F1D;*/
-    color: #fdd100;
+    color: #d3d3d3;
     font-size: 16px; }
     .header-left .dropdown .dropdown-toggle:after {
       display: none; }
@@ -1247,7 +1247,7 @@ header .form-inline {
       background: none !important;
       border-color: transparent !important;
       /*color: #201F1D !important; }*/
-      color: #fdd100 !important; }
+      color: #d3d3d3 !important; }
   .header-left .dropdown .dropdown-menu {
     background: #fff;
     border: none;
@@ -1260,7 +1260,7 @@ header .form-inline {
       padding: 5px 15px; }
     .header-left .dropdown .dropdown-menu .dropdown-item {
       /*color: #201F1D;*/
-      color: #fdd100;
+      color: #d3d3d3;
       font-size: 13px;
       padding: 10px 15px 3px;
       text-overflow: ellipsis; }
@@ -1304,7 +1304,7 @@ header .form-inline {
   position: relative; }
   .user-area .user-menu {
     /*background: #201F1D;*/
-    background: #fdd100;
+    background: #d3d3d3;
     border: none;
     font-family: 'Open Sans';
     left: inherit !important;
@@ -2114,18 +2114,18 @@ header .form-inline {
     .dataTables_paginate .pagination li a {
       border-radius: 0 !important;
       /*color: #201F1D; }*/
-      color: #fdd100; }
+      color: #d3d3d3; }
     .dataTables_paginate .pagination li.active a {
       /*background: #201F1D;*/
       /*border-color: #201F1D;*/
-      background: #fdd100;
-      border-color: #fdd100;
+      background: #d3d3d3;
+      border-color: #d3d3d3;
       color: #fff; }
     .dataTables_paginate .pagination li:hover a {
       /*background: #201F1D;*/
       /*border-color: #201F1D;*/
-      background: #fdd100;
-      border-color: #fdd100;
+      background: #d3d3d3;
+      border-color: #d3d3d3;
       color: #fff; }
 
 @media (max-width: 1368px) {

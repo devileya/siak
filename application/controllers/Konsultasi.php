@@ -14,13 +14,14 @@ class Konsultasi extends CI_Controller
 
     public function index()
     {
-        $data['data'] = $this->konsultasi_model->get();
         $data['students'] = $this->siswa_model->getByRole(5);
         $user_id = $this->session->userdata('user_id');
         if ($this->session->userdata('role_id') == 4) {
             $data['pengirim'] = $this->guru_model->getById($user_id);
+            $data['data'] = $this->konsultasi_model->get();
         } else {
             $data['pengirim'] = $this->orangtua_model->getById($user_id);
+            $data['data'] = $this->konsultasi_model->getByParentId($user_id);
         }
         $this->load->view('konsultasi/list_konsultasi', $data);
     }

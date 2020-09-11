@@ -35,6 +35,7 @@ class Dashboard extends CI_Controller{
     }
 
     // Mencari siswa dengan nilai rerata tertinggi (siswa terpintar)
+    $indexSiswaTerpintar = -1;
     foreach ($totalNilaiSiswa as $index => $item) {
       $avgNilaiSiswa = ($item->total_uh+$item->total_uts+$item->total_uas)/(3*$item->total_pelajaran);
       if ($avgNilaiSiswa > $avgNilaiSiswaTerpintar) {
@@ -46,7 +47,7 @@ class Dashboard extends CI_Controller{
     $data['total_guru_wali'] = $totalGuruWali;
     $data['total_guru_bk'] = $totalGuruBK;
     $data['total_siswa'] = $totalSiswa;
-    $data['siswa_terpintar'] = $totalNilaiSiswa[$indexSiswaTerpintar];
+    $data['siswa_terpintar'] = $indexSiswaTerpintar != -1 ? $totalNilaiSiswa[$indexSiswaTerpintar] : "";
     $data['siswa_pelanggaran_terbanyak'] = $siswaPelanggaranTerbanyak;
     $data['siswa_kehadiran_terendah'] = $siswaKehadiranTerendah;
     $this->load->view('dashboard/dashboard', $data);
