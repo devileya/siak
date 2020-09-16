@@ -9,7 +9,8 @@ class Konsultasi_model extends CI_Model{
     }
 
     function get(){
-        return $this->db->get_where($this->tabel_name)->result();
+        $query = $this->db->query("SELECT * FROM konsultasi order by id desc");
+        return $query->result();
     }
 
     function insert($data)
@@ -43,6 +44,11 @@ class Konsultasi_model extends CI_Model{
 
     function getByParentId($user_id) {
         $query = $this->db->query("SELECT * FROM konsultasi WHERE user_id_pengirim = $user_id or user_id_penerima = $user_id order by id desc");
+        return $query->result();
+    }
+
+    function getByTeacherId($user_id) {
+        $query = $this->db->query("SELECT * FROM konsultasi WHERE user_id_pengirim = $user_id or user_id_penerima = $user_id or user_id_penerima is null order by id desc");
         return $query->result();
     }
 }
