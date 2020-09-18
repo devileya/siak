@@ -54,8 +54,9 @@ class Api extends RestController {
         ], 200);
     }
 
-    public function siswa_get($user_id) {
-        $data = $this->siswa_model->getById($user_id);
+    public function siswa_get($user_id, $role_id) {
+        if ($role_id == "5") $data = $this->siswa_model->getById($user_id);
+        else $data = $this->siswa_model->getByParentId($user_id);
         $this->response( [
             'status' => true,
             'message' => 'Success Get Data',
@@ -103,9 +104,10 @@ class Api extends RestController {
         ], 200);
     }
 
-    public function konsultasi_get($user_id)
+    public function konsultasi_get($user_id, $role_id)
     {
-        $data = $this->konsultasi_model->getByStudentId($user_id);
+        if ($role_id == "5") $data = $this->konsultasi_model->getByStudentId($user_id);
+        else $data = $this->konsultasi_model->getByParentId($user_id);
         $this->response( [
             'status' => true,
             'message' => 'Success Get Data',
