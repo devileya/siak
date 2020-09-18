@@ -54,7 +54,7 @@ class Siswa_model extends CI_Model{
     {
         $query = $this->db->query("SELECT s.*,k.nama nama_kelas, o.nama nama_orangtua, o.id orangtua_id, u.username, u.password, u.role_id 
         FROM siswa s, kelas k, orangtua o, user u  
-        WHERE s.kelas_id = k.id and s.orangtua_id = o.id and s.user_id = u.id and o.id = $user_id");
+        WHERE s.kelas_id = k.id and s.orangtua_id = o.id and o.user_id = u.id and o.id = $user_id");
         return $query->row();
     }
 }
