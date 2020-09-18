@@ -23,8 +23,9 @@ class Api extends RestController {
             $this->post('username'),
             $this->post('password')
         );
-        if(!empty($data) && $data->role_id == 5) {
-            $data = $this->siswa_model->getById($data->id);
+        if(!empty($data) && ($data->role_id == 5 || $data->role_id == 2)) {
+            if ($data->role_id == 5) $data = $this->siswa_model->getById($data->id);
+            else $data = $this->siswa_model->getByParentId($data->id);
             $this->response( [
                 'status' => true,
                 'message' => 'Login Berhasil',
