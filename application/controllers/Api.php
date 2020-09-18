@@ -149,7 +149,7 @@ class Api extends RestController {
 
     public function changepassword_put($user_id) {
         $data = $this->user_model->cek_password($user_id, $this->put('old_password'));
-        if(!empty($data) && $data->role_id == 5) {
+        if(!empty($data) && ($data->role_id == 5 || $data->role_id == 2)) {
             $newData["password"] = $this->put('new_password');
             $this->user_model->update($user_id, $newData);
             $this->response( [
