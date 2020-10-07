@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<?php $this->load->view('dashboard/footer.php') ?>
+<?php $this->load->view('login/footer.php') ?>

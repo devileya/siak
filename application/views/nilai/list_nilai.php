@@ -91,7 +91,7 @@
 
             <div id="add" class="col-4 col-md-4" style="visibility: hidden">
                 <div class="card">
-                    <form action="<?= site_url('nilai/add') ?>" method="post" class="form-horizontal">
+                    <form id="nilai_form" action="<?= site_url('nilai/add') ?>" method="post" class="form-horizontal">
                         <div class="card-header">
                             <strong>Tambah </strong>Nilai
                         </div>
@@ -100,7 +100,7 @@
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Siswa</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="siswa_id" class="form-control" required>
+                                    <select id="siswa" name="siswa_id" class="form-control" required>
                                         <option>--Pilih Siswa--</option>
                                         <?php foreach ($students as $student) {
                                             echo "<option value='$student->id'>$student->nama</option>";
@@ -112,7 +112,7 @@
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Kelas</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="kelas_id" class="form-control" required>
+                                    <select id="kelas" name="kelas_id" class="form-control" required>
                                         <option>--Pilih Kelas--</option>
                                         <?php foreach ($classes as $class) {
                                             echo "<option value='$class->id'>$class->nama</option>";
@@ -124,7 +124,7 @@
                             <div class="row form-group">
                                 <div class="col col-md-12"><label class=" form-control-label">Pelajaran</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="pelajaran_id" class="form-control" required>
+                                    <select id="pelajaran" name="pelajaran_id" class="form-control" required>
                                         <option>--Pilih Pelajaran--</option>
                                         <?php foreach ($subjects as $subject) {
                                             echo "<option value='$subject->id'>$subject->nama</option>";
@@ -167,4 +167,53 @@
     </div><!-- .animated -->
 </div>
 </div><!-- /#right-panel -->
+
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Data Sudah Tersedia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Maaf, Data yang anda inputkan tidak boleh sama dengan yang telah ada.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php $this->load->view('dashboard/footer') ?>
+<script>
+    window.onload = function() {
+        document.getElementById("nilai_form").onsubmit = function() {
+            var siswa_id = $("#siswa").val();
+            var kelas_id = $("#kelas").val();
+            var pelajaran_id = $("#pelajaran").val();
+            var data = <?php echo json_encode($data); ?>;
+            // var checkDataExist = data.filter(item => item.siswa_id == siswa_id && item.kelas_id == kelas_id)
+            var isDataExist = false;
+            data.map(function(item) {
+                if (item.siswa_id == siswa_id && item.kelas_id == kelas_id) {
+                    isDataExist = true;
+                } else {
+                    isDataExist = false;
+                }
+            });
+
+            if (isDataExist) {
+                showErrorModal();
+                return false; // cancel submit
+            }
+            return true; // allow submit
+        }
+    };
+
+    function showErrorModal() {
+        $('#errorModal').modal('toggle');
+    }
+</script>

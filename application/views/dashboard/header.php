@@ -19,7 +19,14 @@
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/css/flag-icon.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/css/cs-skin-elastic.css') ?>">
     <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/scss/style2.css?v=2') ?>">
-    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+
+    <link type="text/css" href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css' rel='stylesheet'>
+    <link type="text/css" href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css' rel='stylesheet'>
+    <link type="text/css" href='https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="<?= base_url('asset_dashboard/assets/scss/style2.css?v=2') ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-PMjWzHVtwxdq7m7GIxBot5vdxUY+5aKP9wpKtvnNBZrVv1srI8tU6xvFMzG8crLNcMj/8Xl/WWmo/oAP/40p1g==" crossorigin="anonymous" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
