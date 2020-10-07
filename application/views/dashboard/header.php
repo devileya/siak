@@ -113,13 +113,13 @@
 
             <div class="col-sm-12">
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a id="dropdownMenuButton" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <h4 style="color: #201F1D">HI, <?= strtoupper($this->session->userdata('username')) ?></h4>
                     </a>
 
-                    <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="<?= site_url('login/editPassword') ?>"><i class="fa fa-power -off"></i>Ubah Password</a>
-                        <a class="nav-link" href="<?= site_url('login/logout') ?>"><i class="fa fa-power -off"></i>Logout</a>
+                    <div class="user-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item nav-link" href="<?= site_url('login/editPassword') ?>" style="color: #201F1D"><i class="fa fa-power -off"></i>Ubah Password</a>
+                        <a class="dropdown-item nav-link" href="<?= site_url('login/logout') ?>" style="color: #201F1D"><i class="fa fa-power -off"></i>Logout</a>
                     </div>
                 </div>
 
