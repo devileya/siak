@@ -195,10 +195,9 @@
             var kelas_id = $("#kelas").val();
             var pelajaran_id = $("#pelajaran").val();
             var data = <?php echo json_encode($data); ?>;
-            // var checkDataExist = data.filter(item => item.siswa_id == siswa_id && item.kelas_id == kelas_id)
             var isDataExist = false;
             data.map(function(item) {
-                if (item.siswa_id == siswa_id && item.kelas_id == kelas_id) {
+                if (item.siswa_id == siswa_id && item.pelajaran_id == pelajaran_id) {
                     isDataExist = true;
                 } else {
                     isDataExist = false;
